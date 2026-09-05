@@ -6,7 +6,6 @@ import {
   ChevronRight,
   CircleDot,
   Clock3,
-  Cloud,
   Code2,
   Fingerprint,
   Globe2,
@@ -121,7 +120,9 @@ export default function Home() {
             </a>
           </div>
           <div className="trust-line">
-            <span><Check size={15} /> Windows и macOS</span>
+            <span><img src="/claude.svg" alt="" /> Claude</span>
+            <span><img src="/apple.svg" alt="" /> macOS</span>
+            <span><Laptop2 size={15} /> Windows</span>
             <span><Check size={15} /> Собственный VPS</span>
             <span><Check size={15} /> Понятная инструкция</span>
           </div>
@@ -133,19 +134,27 @@ export default function Home() {
             <span className="online">ONLINE</span>
           </div>
           <div className="network-scene">
-            <div className="device-node node-laptop"><Laptop2 size={21} /><span>MAC</span></div>
-            <div className="device-node node-phone"><Smartphone size={20} /><span>MOBILE</span></div>
-            <div className="device-node node-pc"><Code2 size={21} /><span>PC</span></div>
-            <div className="connection connection-one" />
-            <div className="connection connection-two" />
-            <div className="connection connection-three" />
+            <div className="device-stack">
+              <div className="device-node"><Laptop2 size={21} /><span>MAC</span></div>
+              <div className="device-node"><Smartphone size={20} /><span>MOBILE</span></div>
+              <div className="device-node"><Code2 size={21} /><span>PC</span></div>
+            </div>
+            <svg className="network-routes" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M 18 18 H 29 V 50 H 39" />
+              <path d="M 18 50 H 39" />
+              <path d="M 18 82 H 29 V 50" />
+              <path d="M 61 50 H 82" />
+              <circle cx="29" cy="18" r="0.8" />
+              <circle cx="29" cy="50" r="0.8" />
+              <circle cx="29" cy="82" r="0.8" />
+              <circle cx="72" cy="50" r="0.8" />
+            </svg>
             <div className="gateway-node">
               <div className="gateway-rings"><ShieldCheck size={34} /></div>
               <strong>CC GATEWAY</strong>
               <span>ONE SECURE IP</span>
             </div>
-            <div className="connection connection-main" />
-            <div className="cloud-node"><Cloud size={26} /><strong>CLAUDE</strong></div>
+            <div className="cloud-node"><img src="/claude.svg" alt="" /><strong>CLAUDE</strong></div>
           </div>
           <div className="network-meta">
             <div><span>ROUTE</span><strong>ENCRYPTED</strong></div>
