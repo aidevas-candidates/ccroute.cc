@@ -14,8 +14,9 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "CC Route — настройка Claude Code под ключ",
-  description: "Единый защищённый контур для Claude и Claude Code на всех ваших устройствах.",
+  title: "CC Route — настройка Claude и Claude Code",
+  description: "Профессиональная настройка рабочей среды для Claude и Claude Code на ваших устройствах — с проверкой, передачей доступов и понятной инструкцией.",
+  icons: { icon: "/favicon.svg" },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

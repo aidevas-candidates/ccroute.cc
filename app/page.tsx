@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   ArrowDownRight,
   ArrowRight,
@@ -5,77 +6,72 @@ import {
   CheckCircle2,
   ChevronRight,
   CircleDot,
-  Clock3,
   Code2,
-  Fingerprint,
-  Globe2,
   HardDrive,
   Laptop2,
   LockKeyhole,
   Network,
-  Router,
   Server,
   ShieldCheck,
-  SlidersHorizontal,
   Smartphone,
   Sparkles,
   UserRoundCheck,
   Wifi,
 } from "lucide-react";
 
-const baseRecommendations = [
+const outcomes = [
   {
     number: "01",
-    title: "Единое гео",
-    text: "Аккаунт, IP, способ оплаты и номер телефона должны относиться к одному региону.",
-    icon: Globe2,
+    title: "Единая рабочая среда",
+    text: "Claude и Claude Code запускаются в согласованной конфигурации на всех устройствах, которые мы подключили.",
+    icon: Network,
   },
   {
     number: "02",
-    title: "Стабильная точка доступа",
-    text: "Multi IP и CC Gateway обеспечивают постоянный маршрут для всех подключённых устройств.",
-    icon: Router,
+    title: "Контроль остаётся у вас",
+    text: "Инфраструктура оформляется под ваш проект. После настройки вы получаете доступы и понимаете, что именно вам принадлежит.",
+    icon: LockKeyhole,
   },
   {
     number: "03",
-    title: "Контролируемый доступ",
-    text: "Один IP и согласованный профиль устройства для команды из двух–трёх пользователей.",
-    icon: Fingerprint,
+    title: "Проверенный запуск",
+    text: "Вместе проходим рабочий сценарий и подтверждаем результат на каждом согласованном устройстве.",
+    icon: CheckCircle2,
   },
   {
     number: "04",
-    title: "Плавный старт",
-    text: "Начинайте с доступного тарифа, сформируйте обычную историю использования и повышайте план постепенно.",
-    icon: SlidersHorizontal,
+    title: "Понятная передача",
+    text: "Вы получаете короткую инструкцию: как запускать, что считать нормальной работой и куда смотреть при изменениях.",
+    icon: UserRoundCheck,
   },
 ];
 
-const deviceChecklist = [
-  "Синхронизировать часовой пояс, геолокацию и язык с IP",
-  "Изолировать Claude в отдельном профиле браузера",
-  "Защитить соединение от утечек реального IP через WebRTC",
-  "Отключить необязательную телеметрию в настройках",
-  "Периодически очищать локальные данные сервиса",
-  "Настроить системный прокси для автоматической работы Claude Code",
+const included = [
+  "Разбор вашего сценария и списка устройств",
+  "Настройка согласованной рабочей среды",
+  "Проверка Claude и Claude Code в реальной задаче",
+  "Передача доступов к вашей инфраструктуре",
+  "Короткая инструкция для ежедневной работы",
+  "Сопровождение во время запуска",
 ];
 
 const stages = [
   {
     label: "Диагностика",
-    title: "Разбираем ваш сценарий",
-    text: "Устройства, операционные системы, текущий доступ и задачи команды — без лишней технической анкеты.",
+    title: "Сначала понимаем задачу",
+    text: "Уточняем устройства, операционные системы и привычный способ работы. Фиксируем подходящий сценарий и состав настройки.",
     icon: CircleDot,
   },
   {
-    label: "Инфраструктура",
-    title: "Собираем приватный контур",
-    text: "Настраиваем VPS, единый IP, gateway и отдельные профили на каждом устройстве.",
+    label: "Настройка",
+    title: "Собираем среду под вас",
+    text: "Берём техническую часть на себя и собираем согласованный рабочий сценарий под ваши устройства.",
     icon: Server,
   },
   {
-    label: "Запуск",
-    title: "Подключаем и проверяем",
-    text: "Тестируем работу Claude и Claude Code, фиксируем настройки и передаём понятную инструкцию.",
+    label: "Передача",
+    title: "Проверяем и передаём контроль",
+    text: "Запускаем рабочий сценарий на согласованных устройствах, передаём доступы и оставляем понятную инструкцию.",
     icon: CheckCircle2,
   },
 ];
@@ -90,11 +86,11 @@ export default function Home() {
         </a>
         <div className="nav-links">
           <a href="#approach">Подход</a>
-          <a href="#recommendations">Рекомендации</a>
-          <a href="#process">Как работаем</a>
+          <a href="#result">Результат</a>
+          <a href="#process">Как проходит</a>
         </div>
         <a className="nav-cta" href="#contact">
-          Обсудить настройку <ArrowUpRightIcon />
+          Обсудить задачу <ArrowUpRightIcon />
         </a>
       </nav>
 
@@ -102,36 +98,37 @@ export default function Home() {
         <div className="hero-grid" aria-hidden="true" />
         <div className="hero-glow" aria-hidden="true" />
         <div className="hero-copy">
-          <div className="eyebrow"><span /> Настройка Claude Code под ключ</div>
+          <div className="eyebrow"><span /> Настройка Claude и Claude Code</div>
           <h1>
-            Claude работает.<br />
-            <em>Где бы вы ни были.</em>
+            Рабочая среда.<br />
+            <em>На ваших устройствах.</em>
           </h1>
           <p className="hero-lead">
-            Единый защищённый контур для Claude и Claude Code на всех ваших устройствах —
-            со стабильным IP, собственным VPS и аккуратной настройкой окружения.
+            Профессионально собираем и проверяем среду для Claude и Claude Code.
+            Вы получаете понятную конфигурацию, инфраструктуру под своим контролем
+            и сопровождение при запуске.
           </p>
           <div className="hero-actions">
             <a className="button button-primary" href="#contact">
-              Настроить Claude <ArrowRight size={18} />
+              Обсудить задачу <ArrowRight size={18} />
             </a>
-            <a className="text-link" href="#approach">
-              Посмотреть, как это работает <ArrowDownRight size={17} />
+            <a className="text-link" href="#result">
+              Посмотреть результат <ArrowDownRight size={17} />
             </a>
           </div>
-          <div className="trust-line">
-            <span><img src="/claude.svg" alt="" /> Claude</span>
-            <span><img src="/apple.svg" alt="" /> macOS</span>
+          <div className="trust-line" aria-label="Поддерживаемые сценарии">
+            <span><Image src="/claude.svg" alt="" width={15} height={15} /> Claude</span>
+            <span><Image src="/apple.svg" alt="" width={15} height={15} /> macOS</span>
             <span><Laptop2 size={15} /> Windows</span>
-            <span><Check size={15} /> Собственный VPS</span>
-            <span><Check size={15} /> Понятная инструкция</span>
+            <span><Check size={15} /> Несколько устройств</span>
+            <span><Check size={15} /> Передача контроля</span>
           </div>
         </div>
 
-        <div className="network-card" aria-label="Схема защищённого подключения">
+        <div className="network-card" aria-label="Схема единой рабочей среды">
           <div className="network-card-head">
-            <div><span className="status-dot" /> PRIVATE NETWORK</div>
-            <span className="online">ONLINE</span>
+            <div><span className="status-dot" /> WORKSPACE STATUS</div>
+            <span className="online">READY</span>
           </div>
           <div className="network-scene">
             <div className="device-stack">
@@ -139,73 +136,67 @@ export default function Home() {
               <div className="device-node"><Smartphone size={20} /><span>MOBILE</span></div>
               <div className="device-node"><Code2 size={21} /><span>PC</span></div>
             </div>
-            <svg className="network-routes" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-              <path d="M 18 18 H 29 V 50 H 39" />
-              <path d="M 18 50 H 39" />
-              <path d="M 18 82 H 29 V 50" />
-              <path d="M 61 50 H 82" />
-              <circle cx="29" cy="18" r="0.8" />
-              <circle cx="29" cy="50" r="0.8" />
-              <circle cx="29" cy="82" r="0.8" />
-              <circle cx="72" cy="50" r="0.8" />
-            </svg>
+            <div className="route-in" aria-hidden="true">
+              <span /><span /><span /><i />
+            </div>
             <div className="gateway-node">
               <div className="gateway-rings"><ShieldCheck size={34} /></div>
-              <strong>CC GATEWAY</strong>
-              <span>ONE SECURE IP</span>
+              <strong>ONE WORKSPACE</strong>
+              <span>CONFIGURED</span>
             </div>
-            <div className="cloud-node"><img src="/claude.svg" alt="" /><strong>CLAUDE</strong></div>
+            <div className="route-out" aria-hidden="true"><i /></div>
+            <div className="cloud-node"><Image src="/claude.svg" alt="" width={27} height={27} /><strong>CLAUDE</strong></div>
           </div>
           <div className="network-meta">
-            <div><span>ROUTE</span><strong>ENCRYPTED</strong></div>
-            <div><span>DEVICES</span><strong>03 ACTIVE</strong></div>
-            <div><span>LATENCY</span><strong>STABLE</strong></div>
+            <div><span>ACCESS</span><strong>READY</strong></div>
+            <div><span>DEVICES</span><strong>VERIFIED</strong></div>
+            <div><span>CONTROL</span><strong>YOURS</strong></div>
           </div>
         </div>
       </section>
 
       <section className="signal-strip" aria-label="Преимущества">
-        <div><Wifi size={18} /><span>Один стабильный IP</span></div>
-        <div><LockKeyhole size={18} /><span>Изолированная среда</span></div>
-        <div><HardDrive size={18} /><span>Ваш собственный сервер</span></div>
-        <div><UserRoundCheck size={18} /><span>Настройка под ваш сценарий</span></div>
+        <div><Wifi size={18} /><span>Одна понятная конфигурация</span></div>
+        <div><LockKeyhole size={18} /><span>Согласованный рабочий сценарий</span></div>
+        <div><HardDrive size={18} /><span>Инфраструктура под вашим контролем</span></div>
+        <div><UserRoundCheck size={18} /><span>Проверка на каждом устройстве</span></div>
       </section>
 
       <section className="section approach" id="approach">
         <div className="section-intro">
           <span className="section-kicker">01 / ПОДХОД</span>
-          <h2>Не просто прокси.<br /><span>Цельная система доступа.</span></h2>
+          <h2>Цельная рабочая среда.<br /><span>Для ежедневных задач.</span></h2>
         </div>
         <div className="approach-content">
           <p className="large-copy">
-            Стабильность зависит не от одной настройки. Важно, чтобы аккаунт, сеть,
-            устройство и привычный сценарий использования не противоречили друг другу.
+            Одна согласованная конфигурация помогает спокойно продолжать работу
+            на каждом подключённом устройстве.
           </p>
           <p>
-            Мы собираем эти элементы в единую конфигурацию и проверяем её на каждом
-            устройстве. В результате вы получаете рабочую среду, которой легко пользоваться
-            каждый день — без постоянного переключения VPN и ручной настройки терминала.
+            Мы приводим ваш сценарий к одной согласованной конфигурации, проверяем её
+            в реальной задаче и передаём вам. Внутреннюю техническую часть берём на себя,
+            а вам оставляем понятный и готовый к работе результат.
           </p>
           <div className="principle-card">
             <Sparkles size={20} />
-            <div><strong>Главный принцип</strong><span>Одинаковые условия подключения, предсказуемое поведение системы.</span></div>
+            <div><strong>Главный принцип</strong><span>Мы настраиваем и проверяем. Вы спокойно используете.</span></div>
           </div>
         </div>
       </section>
 
-      <section className="recommendations" id="recommendations">
+      <section className="recommendations" id="result">
         <div className="section recommendations-head">
           <div className="section-intro">
-            <span className="section-kicker light">02 / БАЗОВАЯ КОНФИГУРАЦИЯ</span>
-            <h2>Четыре уровня<br /><span>стабильной настройки</span></h2>
+            <span className="section-kicker light">02 / РЕЗУЛЬТАТ</span>
+            <h2>Что остаётся у вас<br /><span>после настройки</span></h2>
           </div>
           <p>
-            Базовые правила, на которых строится надёжный доступ к Claude для одного
-            пользователя или небольшой команды.
+            Рабочая среда, понятная передача и контроль над тем,
+            за что вы платите.
           </p>
         </div>
         <div className="recommendation-grid">
-          {baseRecommendations.map((item) => {
+          {outcomes.map((item) => {
             const Icon = item.icon;
             return (
               <article className="recommendation-card" key={item.number}>
@@ -219,30 +210,28 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section device-section">
-        <div className="device-visual" aria-hidden="true">
-          <div className="terminal-window">
-            <div className="terminal-bar"><span /><span /><span /><em>gateway.config</em></div>
-            <div className="terminal-body">
-              <p><i>01</i><span className="code-muted"># device profile</span></p>
-              <p><i>02</i><b>network</b>: <span className="code-value">secure_route</span></p>
-              <p><i>03</i><b>system_proxy</b>: <span className="code-good">enabled</span></p>
-              <p><i>04</i><b>telemetry</b>: <span className="code-value">disabled</span></p>
-              <p><i>05</i><b>browser_profile</b>: <span className="code-good">isolated</span></p>
-              <p><i>06</i><span className="code-muted"># status: ready</span></p>
+      <section className="section device-section" id="included">
+        <div className="device-visual" aria-label="Состав передаваемой конфигурации">
+          <div className="handover-window">
+            <div className="handover-bar"><span /><span /><span /><em>project handover</em></div>
+            <div className="handover-body">
+              <div><span>Рабочая среда</span><strong>READY</strong></div>
+              <div><span>Устройства</span><strong>VERIFIED</strong></div>
+              <div><span>Доступы</span><strong>TRANSFERRED</strong></div>
+              <div><span>Инструкция</span><strong>INCLUDED</strong></div>
             </div>
           </div>
-          <div className="secure-badge"><ShieldCheck size={20} /><span><strong>PROFILE READY</strong>6/6 параметров настроено</span></div>
+          <div className="secure-badge"><ShieldCheck size={20} /><span><strong>ГОТОВО К РАБОТЕ</strong>Результат проверен вместе с вами</span></div>
         </div>
         <div className="device-copy">
-          <span className="section-kicker">03 / КАЖДОЕ УСТРОЙСТВО</span>
-          <h2>Аккуратная настройка — <span>в деталях</span></h2>
+          <span className="section-kicker">03 / ЧТО ВХОДИТ</span>
+          <h2>Техническая часть — <span>на нашей стороне</span></h2>
           <p>
-            На каждом компьютере создаём отдельную, согласованную с сетью среду. Всё,
-            что можно автоматизировать, работает в фоне.
+            Состав работ фиксируем до начала настройки, а после передачи у вас
+            остаются доступы и понятная инструкция.
           </p>
           <ul className="check-list">
-            {deviceChecklist.map((item) => (
+            {included.map((item) => (
               <li key={item}><CheckCircle2 size={18} />{item}</li>
             ))}
           </ul>
@@ -253,8 +242,8 @@ export default function Home() {
         <div className="section process-inner">
           <div className="process-title">
             <span className="section-kicker light">04 / ПРОЦЕСС</span>
-            <h2>От первого сообщения<br />до рабочего Claude</h2>
-            <p>Берём техническую часть на себя и объясняем только то, что действительно понадобится вам в работе.</p>
+            <h2>От вашего сценария<br />до проверенного запуска</h2>
+            <p>Каждый этап заканчивается понятным результатом: от согласованного сценария до проверенного запуска.</p>
           </div>
           <div className="stage-list">
             {stages.map((stage, index) => {
@@ -278,15 +267,15 @@ export default function Home() {
       <section className="section contact" id="contact">
         <div className="contact-card">
           <div className="contact-copy">
-            <span className="section-kicker">ГОТОВЫ НАЧАТЬ?</span>
-            <h2>Соберём стабильную<br />среду под ваш сценарий.</h2>
-            <p>Расскажите, сколько у вас устройств и где вы планируете использовать Claude. Мы предложим понятную схему настройки.</p>
+            <span className="section-kicker">СНАЧАЛА — ДИАГНОСТИКА</span>
+            <h2>Подберём решение под ваш сценарий.</h2>
+            <p>Напишите, какие устройства используете и как планируете работать с Claude. Предложим подходящий состав настройки под ваш сценарий.</p>
           </div>
           <div className="contact-action">
-            <a className="button button-dark" href="mailto:hello@example.com">
-              Обсудить задачу <ArrowRight size={19} />
+            <a className="button button-dark" href="https://t.me/ikokolsk1y" target="_blank" rel="noreferrer">
+              Написать в Telegram <ArrowRight size={19} />
             </a>
-            <span><Clock3 size={15} /> Обычно отвечаем в течение часа</span>
+            <span><CheckCircle2 size={15} /> Понятный состав работы до начала настройки · @ikokolsk1y</span>
           </div>
           <div className="contact-orbit" aria-hidden="true"><div /><div /><div /></div>
         </div>
@@ -294,8 +283,8 @@ export default function Home() {
 
       <footer>
         <a className="brand" href="#top"><span className="brand-mark"><Network size={19} /></span><span>CC ROUTE</span></a>
-        <p>Настройка инфраструктуры для Claude и Claude Code</p>
-        <div><span>© 2026</span><a href="#recommendations">Рекомендации</a><a href="#process">Процесс</a></div>
+        <p>Профессиональная настройка рабочей среды для Claude и Claude Code</p>
+        <div><span>© 2026</span><a href="#result">Результат</a><a href="#contact">Связаться</a></div>
       </footer>
     </main>
   );
