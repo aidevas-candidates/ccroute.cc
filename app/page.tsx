@@ -23,7 +23,7 @@ const outcomes = [
   {
     number: "01",
     title: "Единая рабочая среда",
-    text: "Claude и Claude Code запускаются в согласованной конфигурации на всех устройствах, которые мы подключили.",
+    text: "Claude Code запускается в согласованной конфигурации на всех устройствах, которые мы подключили.",
     icon: Network,
   },
   {
@@ -49,7 +49,7 @@ const outcomes = [
 const included = [
   "Разбор вашего сценария и списка устройств",
   "Настройка согласованной рабочей среды",
-  "Проверка Claude и Claude Code в реальной задаче",
+  "Проверка Claude Code в реальной задаче",
   "Передача доступов к вашей инфраструктуре",
   "Короткая инструкция для ежедневной работы",
   "Сопровождение во время запуска",
@@ -98,13 +98,13 @@ export default function Home() {
         <div className="hero-grid" aria-hidden="true" />
         <div className="hero-glow" aria-hidden="true" />
         <div className="hero-copy">
-          <div className="eyebrow"><span /> Настройка Claude и Claude Code</div>
+          <div className="eyebrow"><span /> Настройка Claude Code</div>
           <h1>
             Рабочая среда.<br />
             <em>На ваших устройствах.</em>
           </h1>
           <p className="hero-lead">
-            Профессионально собираем и проверяем среду для Claude и Claude Code.
+            Профессионально собираем и проверяем среду для Claude Code.
             Вы получаете понятную конфигурацию, инфраструктуру под своим контролем
             и сопровождение при запуске.
           </p>
@@ -117,7 +117,7 @@ export default function Home() {
             </a>
           </div>
           <div className="trust-line" aria-label="Поддерживаемые сценарии">
-            <span><Image src="/claude.svg" alt="" width={15} height={15} /> Claude</span>
+            <span><Image src="/claude.svg" alt="" width={15} height={15} /> Claude Code</span>
             <span><Image src="/apple.svg" alt="" width={15} height={15} /> macOS</span>
             <span><Laptop2 size={15} /> Windows</span>
             <span><Check size={15} /> Несколько устройств</span>
@@ -145,7 +145,7 @@ export default function Home() {
               <span>CONFIGURED</span>
             </div>
             <div className="route-out" aria-hidden="true"><i /></div>
-            <div className="cloud-node"><Image src="/claude.svg" alt="" width={27} height={27} /><strong>CLAUDE</strong></div>
+            <div className="cloud-node"><Image src="/claude.svg" alt="" width={27} height={27} /><strong>CLAUDE CODE</strong></div>
           </div>
           <div className="network-meta">
             <div><span>ACCESS</span><strong>READY</strong></div>
@@ -269,7 +269,7 @@ export default function Home() {
           <div className="contact-copy">
             <span className="section-kicker">СНАЧАЛА — ДИАГНОСТИКА</span>
             <h2>Подберём решение под ваш сценарий.</h2>
-            <p>Напишите, какие устройства используете и как планируете работать с Claude. Предложим подходящий состав настройки под ваш сценарий.</p>
+            <p>Напишите, какие устройства используете и как планируете работать с Claude Code. Предложим подходящий состав настройки под ваш сценарий.</p>
           </div>
           <div className="contact-action">
             <a className="button button-dark" href="https://t.me/ikokolsk1y" target="_blank" rel="noreferrer">
@@ -283,7 +283,7 @@ export default function Home() {
 
       <footer>
         <a className="brand" href="#top"><span className="brand-mark"><Network size={19} /></span><span>CC ROUTE</span></a>
-        <p>Профессиональная настройка рабочей среды для Claude и Claude Code</p>
+        <p>Профессиональная настройка рабочей среды для Claude Code</p>
         <div><span>© 2026</span><a href="#result">Результат</a><a href="#contact">Связаться</a></div>
       </footer>
     </main>
