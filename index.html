@@ -44,7 +44,7 @@
     html {
       scroll-behavior: smooth;
       scroll-padding-top: 90px;
-      overflow-x: hidden;
+      overflow-x: clip;
     }
 
     body {
@@ -57,7 +57,7 @@
       font-family: var(--font-text);
       font-size: 16px;
       line-height: 1.55;
-      overflow-x: hidden;
+      overflow-x: clip;
     }
 
     body::before {
@@ -297,7 +297,7 @@
       position: relative;
       z-index: 4;
       display: grid;
-      grid-template-columns: repeat(7, auto);
+      grid-template-columns: repeat(4, auto);
       align-items: center;
       gap: 16px;
       width: max-content;
@@ -313,8 +313,6 @@
     }
 
     .logic-strip strong:last-child { color: var(--mint); }
-    .logic-strip span:nth-child(even) { color: var(--gold); }
-
     .section-header {
       display: grid;
       grid-template-columns: minmax(0,1.6fr) minmax(280px,.7fr);
@@ -335,7 +333,7 @@
 
     .pain-item {
       display: grid;
-      grid-template-columns: 1fr auto;
+      grid-template-columns: 1fr;
       gap: 28px;
       align-items: center;
       min-height: 118px;
@@ -347,17 +345,6 @@
       max-width: 900px;
       margin: 0;
       font-size: clamp(1.45rem,2.2vw,2.05rem);
-    }
-
-    .pain-symbol {
-      color: var(--muted);
-      font-size: 1.5rem;
-      transition: color .2s ease, transform .2s ease;
-    }
-
-    .pain-item:hover .pain-symbol {
-      color: var(--mint);
-      transform: translate(3px,-3px);
     }
 
     .offer {
@@ -410,32 +397,6 @@
       margin: 0;
       color: var(--muted);
       font-size: .92rem;
-    }
-
-    .meta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 9px;
-      margin-top: 30px;
-    }
-
-    .tag {
-      display: inline-flex;
-      align-items: center;
-      padding: 8px 12px;
-      color: var(--muted);
-      background: rgba(255,255,255,.025);
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      font-size: .84rem;
-      backdrop-filter: blur(8px);
-      transition: color .2s ease, border-color .2s ease, background .2s ease;
-    }
-
-    .tag:hover {
-      color: var(--text);
-      border-color: rgba(104,245,195,.34);
-      background: rgba(104,245,195,.045);
     }
 
     .steps {
@@ -913,22 +874,59 @@
 
     .scroll-emphasis {
       color: inherit;
-      background-image: linear-gradient(90deg,rgba(104,245,195,.16),rgba(104,245,195,.05));
+      background-image: linear-gradient(90deg,var(--mint),rgba(104,245,195,.45));
       background-repeat: no-repeat;
-      background-position: 0 92%;
-      background-size: 0 24%;
+      background-position: 0 96%;
+      background-size: 0 2px;
       transition:
-        color .7s cubic-bezier(.22,1,.36,1),
-        background-size .85s cubic-bezier(.22,1,.36,1),
-        text-shadow .7s ease;
+        background-size .85s cubic-bezier(.22,1,.36,1);
       box-decoration-break: clone;
       -webkit-box-decoration-break: clone;
     }
 
     .scroll-emphasis.is-active {
-      color: var(--mint);
-      background-size: 100% 24%;
-      text-shadow: 0 0 28px rgba(104,245,195,.12);
+      color: inherit;
+      background-size: 100% 2px;
+      text-shadow: none;
+    }
+
+    .context-sticker {
+      position: relative;
+      max-width: 430px;
+      margin: 0 6px 8px 0;
+      padding: 20px 22px;
+      background:
+        linear-gradient(145deg,rgba(255,255,255,.065),rgba(255,255,255,.025));
+      border: 1px solid rgba(236,208,111,.22);
+      border-radius: 18px;
+      box-shadow: 0 18px 50px rgba(0,0,0,.16);
+      backdrop-filter: blur(12px);
+      transform: rotate(-.65deg);
+    }
+
+    .context-sticker::before {
+      content: "";
+      position: absolute;
+      top: -7px;
+      left: 38px;
+      width: 54px;
+      height: 13px;
+      background: rgba(236,208,111,.15);
+      border: 1px solid rgba(236,208,111,.2);
+      border-radius: 4px;
+      transform: rotate(1.4deg);
+      backdrop-filter: blur(6px);
+    }
+
+    .context-sticker.reveal {
+      filter: blur(2px);
+      transform: translate(18px,7px) rotate(.75deg);
+      transition-delay: .08s;
+    }
+
+    .context-sticker.reveal.visible {
+      filter: blur(0);
+      transform: rotate(-.65deg);
     }
 
     @media (max-width: 980px) {
@@ -1005,11 +1003,7 @@
         border-left: 1px solid var(--gold);
       }
 
-      .logic-strip span:nth-child(even) { display: none; }
-
-      .pain-item { grid-template-columns: 1fr auto; }
-      .pain-symbol { display: none; }
-
+      .pain-item { grid-template-columns: 1fr; }
       .steps,
       .scenarios,
       .forces,
@@ -1044,6 +1038,12 @@
       details p { margin: -2px 56px 22px 18px; }
 
       .button { width: 100%; }
+
+      .context-sticker {
+        max-width: none;
+        margin-right: 2px;
+        padding: 18px;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1065,6 +1065,13 @@
         color: inherit;
         background-size: 0 0;
         text-shadow: none;
+      }
+
+      .context-sticker,
+      .context-sticker.reveal,
+      .context-sticker.reveal.visible {
+        filter: none;
+        transform: rotate(-.65deg);
       }
     }
   </style>
@@ -1111,7 +1118,7 @@
         </p>
 
         <div class="button-row">
-          <a class="button button-primary" href="#request">Разобрать продуктовую задачу →</a>
+          <a class="button button-primary" href="#request">Разобрать продуктовую задачу</a>
           <a class="button button-secondary" href="#offer">Посмотреть первый формат</a>
         </div>
 
@@ -1123,11 +1130,8 @@
 
         <div class="logic-strip" aria-label="Логика работы">
           <strong>Неопределённость</strong>
-          <span>→</span>
           <strong>Данные</strong>
-          <span>→</span>
           <strong>Гипотеза</strong>
-          <span>→</span>
           <strong>Следующий тест</strong>
         </div>
       </div>
@@ -1150,27 +1154,22 @@
         <div class="pain-list">
           <div class="pain-item reveal">
             <h3>Поговорили с клиентами, но выводы получились размытыми</h3>
-            <span class="pain-symbol">↗</span>
           </div>
 
           <div class="pain-item reveal">
             <h3>Ценность продукта приходится долго объяснять</h3>
-            <span class="pain-symbol">↗</span>
           </div>
 
           <div class="pain-item reveal">
             <h3>Непонятно, на какой сегмент делать ставку</h3>
-            <span class="pain-symbol">↗</span>
           </div>
 
           <div class="pain-item reveal">
             <h3>Люди интересуются продуктом, но не доходят до покупки</h3>
-            <span class="pain-symbol">↗</span>
           </div>
 
           <div class="pain-item reveal">
             <h3>Гипотез слишком много, а следующего приоритета нет</h3>
-            <span class="pain-symbol">↗</span>
           </div>
         </div>
       </div>
@@ -1191,15 +1190,8 @@
                 и почему стоит обратить на него внимание.
               </p>
 
-              <div class="meta-row">
-                <span class="tag">Письменно</span>
-                <span class="tag">На вашем материале</span>
-                <span class="tag">Без длинного исследования</span>
-                <span class="tag">Без обязательного созвона</span>
-              </div>
-
               <div class="button-row">
-                <a class="button button-primary" href="#request">Проверить, подходит ли формат →</a>
+                <a class="button button-primary" href="#request">Проверить, подходит ли формат</a>
               </div>
             </div>
 
@@ -1331,7 +1323,7 @@
 
     <section class="section" id="method">
       <div class="container method-grid">
-        <aside class="job-story reveal">
+        <aside class="job-story">
           <small>Job Story</small>
           <p>
             Когда <u>возникает ситуация</u>, я хочу
@@ -1555,7 +1547,7 @@
             <div class="contact-action">
               <strong>Напишите Нике коротко о продукте и решении, которое сейчас трудно принять</strong>
               <a class="button" href="https://t.me/nika_myata" target="_blank" rel="noopener noreferrer">
-                Перейти в Telegram →
+                Перейти в Telegram
               </a>
               <small>Сайт не запрашивает и не хранит ваши имя, контакты или описание задачи</small>
             </div>
@@ -1595,6 +1587,10 @@
       });
     });
 
+    document.querySelectorAll(".section-header > p").forEach(element => {
+      element.classList.add("context-sticker", "reveal");
+    });
+
     document.querySelectorAll(".section-header").forEach(element => {
       element.dataset.reveal = "left";
     });
@@ -1607,9 +1603,7 @@
       element.dataset.reveal = "soft";
     });
 
-    const jobStory = document.querySelector(".job-story");
     const methodCopy = document.querySelector(".method-copy");
-    if (jobStory) jobStory.dataset.reveal = "left";
     if (methodCopy) methodCopy.dataset.reveal = "right";
 
     const emphasisTargets = [
