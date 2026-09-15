@@ -22,11 +22,11 @@
   <style>
     :root {
       --bg: #050505;
-      --surface: #111;
-      --surface-2: #171717;
+      --surface: #121412;
+      --surface-2: #191b19;
       --text: #f4f1e8;
-      --muted: #aaa79f;
-      --line: rgba(255,255,255,.13);
+      --muted: #b9b6ad;
+      --line: rgba(255,255,255,.16);
       --gold: #ecd06f;
       --gold-soft: rgba(236,208,111,.14);
       --violet: #8052ff;
@@ -109,7 +109,7 @@
     }
 
     h3 {
-      font-weight: 650;
+      font-weight: 700;
       letter-spacing: -.035em;
       line-height: 1.08;
       font-size: clamp(1.4rem, 2vw, 2rem);
@@ -129,23 +129,18 @@
     .eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 9px;
       margin-bottom: 24px;
+      padding: 7px 11px;
       color: var(--gold);
+      background: rgba(236,208,111,.035);
+      border: 1px solid rgba(236,208,111,.24);
+      border-radius: 999px;
+      backdrop-filter: blur(8px);
       font-family: var(--font-display);
-      font-size: .7rem;
+      font-size: .72rem;
       font-weight: 600;
       letter-spacing: .1em;
       text-transform: uppercase;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 7px;
-      height: 7px;
-      background: currentColor;
-      border-radius: 50%;
-      box-shadow: 0 0 20px currentColor;
     }
 
     .button-row {
@@ -289,23 +284,9 @@
 
     .hero-note {
       max-width: 600px;
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
       margin-top: 28px;
       color: var(--muted);
       font-size: .9rem;
-    }
-
-    .hero-note::before {
-      content: "";
-      flex: 0 0 auto;
-      width: 8px;
-      height: 8px;
-      margin-top: 7px;
-      background: var(--violet);
-      border-radius: 50%;
-      box-shadow: 0 0 20px var(--violet);
     }
 
     .logic-strip {
@@ -348,7 +329,7 @@
 
     .pain-item {
       display: grid;
-      grid-template-columns: 70px 1fr auto;
+      grid-template-columns: 1fr auto;
       gap: 28px;
       align-items: center;
       min-height: 118px;
@@ -356,15 +337,10 @@
       border-bottom: 1px solid var(--line);
     }
 
-    .pain-number {
-      color: var(--gold);
-      font-family: var(--font-display);
-      font-size: .69rem;
-    }
-
     .pain-item h3 {
       max-width: 900px;
       margin: 0;
+      font-size: clamp(1.45rem,2.2vw,2.05rem);
     }
 
     .pain-symbol {
@@ -390,19 +366,6 @@
       border-radius: 34px;
     }
 
-    .offer::after {
-      content: "01";
-      position: absolute;
-      top: -20px;
-      right: 24px;
-      color: rgba(255,255,255,.035);
-      font-family: var(--font-display);
-      font-size: clamp(8rem,20vw,18rem);
-      font-weight: 700;
-      line-height: 1;
-      pointer-events: none;
-    }
-
     .offer-grid {
       position: relative;
       z-index: 2;
@@ -423,25 +386,18 @@
     }
 
     .result-item {
-      display: grid;
-      grid-template-columns: 34px 1fr;
-      gap: 14px;
       padding: 18px 0;
       border-bottom: 1px solid var(--line);
     }
 
     .result-item:first-child { border-top: 1px solid var(--line); }
 
-    .result-icon {
-      color: var(--mint);
-      font-family: var(--font-display);
-      font-size: .7rem;
-      font-weight: 700;
-    }
-
     .result-item strong {
       display: block;
       margin-bottom: 5px;
+      color: var(--text);
+      font-size: 1.05rem;
+      font-weight: 700;
     }
 
     .result-item p {
@@ -458,12 +414,22 @@
     }
 
     .tag {
-      padding: 9px 13px;
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 12px;
       color: var(--muted);
-      background: rgba(255,255,255,.045);
+      background: rgba(255,255,255,.025);
       border: 1px solid var(--line);
       border-radius: 999px;
-      font-size: .82rem;
+      font-size: .84rem;
+      backdrop-filter: blur(8px);
+      transition: color .2s ease, border-color .2s ease, background .2s ease;
+    }
+
+    .tag:hover {
+      color: var(--text);
+      border-color: rgba(104,245,195,.34);
+      background: rgba(104,245,195,.045);
     }
 
     .steps {
@@ -481,20 +447,27 @@
     .step:last-child { border-right: 0; }
 
     .step-index {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 6px 10px;
       color: var(--gold);
+      background: rgba(236,208,111,.035);
+      border: 1px solid rgba(236,208,111,.22);
+      border-radius: 999px;
       font-family: var(--font-display);
       font-size: .65rem;
     }
 
     .step h3 {
-      margin: 70px 0 16px;
-      font-size: 1.4rem;
+      margin: 58px 0 16px;
+      font-size: 1.5rem;
     }
 
     .step p {
       margin: 0;
       color: var(--muted);
-      font-size: .93rem;
+      font-size: .96rem;
     }
 
     .scenarios {
@@ -506,7 +479,9 @@
     .scenario {
       min-height: 250px;
       padding: 30px;
-      background: var(--surface);
+      background:
+        linear-gradient(145deg,rgba(255,255,255,.025),transparent 46%),
+        var(--surface);
       border: 1px solid var(--line);
       border-radius: var(--radius);
       transition: border-color .25s ease, transform .25s ease, box-shadow .25s ease;
@@ -519,16 +494,24 @@
     }
 
     .scenario-label {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 6px 10px;
       color: var(--gold);
+      background: rgba(236,208,111,.035);
+      border: 1px solid rgba(236,208,111,.22);
+      border-radius: 999px;
       font-family: var(--font-display);
-      font-size: .66rem;
+      font-size: .7rem;
       text-transform: uppercase;
       letter-spacing: .08em;
     }
 
     .scenario h3 {
       max-width: 480px;
-      margin: 55px 0 15px;
+      margin: 46px 0 15px;
+      font-size: clamp(1.5rem,2.1vw,2rem);
     }
 
     .scenario p {
@@ -586,15 +569,22 @@
     .force {
       min-height: 165px;
       padding: 24px;
-      background: var(--surface);
+      background:
+        linear-gradient(145deg,rgba(104,245,195,.025),transparent 54%),
+        var(--surface);
       border: 1px solid var(--line);
       border-radius: 18px;
     }
 
     .force b {
-      display: block;
+      display: inline-flex;
+      align-items: center;
       margin-bottom: 28px;
+      padding: 7px 10px;
       color: var(--mint);
+      background: rgba(104,245,195,.035);
+      border: 1px solid rgba(104,245,195,.22);
+      border-radius: 999px;
       font-family: var(--font-display);
       font-size: .78rem;
     }
@@ -621,7 +611,13 @@
     }
 
     .artifact-top span {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 11px;
       color: #625f58;
+      background: rgba(255,255,255,.24);
+      border: 1px solid rgba(0,0,0,.16);
+      border-radius: 999px;
       font-size: .84rem;
     }
 
@@ -656,6 +652,7 @@
     .artifact-cell b {
       display: block;
       margin-bottom: 9px;
+      font-size: 1.04rem;
     }
 
     .artifact-cell p {
@@ -706,7 +703,7 @@
 
     .person-info h3 {
       margin-bottom: 8px;
-      font-size: 1.35rem;
+      font-size: 1.45rem;
     }
 
     .person-info p {
@@ -716,46 +713,90 @@
     }
 
     .person-note {
-      display: block;
+      display: inline-flex;
+      align-items: center;
       margin-top: 12px;
+      padding: 7px 10px;
       color: rgba(255,255,255,.42);
+      background: rgba(255,255,255,.018);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 999px;
       font-size: .72rem;
       letter-spacing: .04em;
     }
 
     .faq {
-      max-width: 900px;
-      margin-left: auto;
+      display: grid;
+      grid-template-columns: repeat(2,minmax(0,1fr));
+      gap: 12px;
     }
 
-    details { border-top: 1px solid var(--line); }
-    details:last-child { border-bottom: 1px solid var(--line); }
+    details {
+      min-width: 0;
+      background: rgba(255,255,255,.024);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      transition: border-color .25s ease, background .25s ease, transform .25s ease;
+    }
+
+    details:hover {
+      transform: translateY(-2px);
+      border-color: rgba(104,245,195,.32);
+      background: rgba(104,245,195,.035);
+    }
+
+    details[open] {
+      border-color: rgba(104,245,195,.42);
+      background: rgba(104,245,195,.05);
+    }
 
     summary {
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      gap: 30px;
-      padding: 27px 0;
+      gap: 22px;
+      min-height: 92px;
+      padding: 22px 24px;
       cursor: pointer;
       list-style: none;
-      font-size: 1.15rem;
-      font-weight: 600;
+      font-size: 1.18rem;
+      font-weight: 700;
     }
 
     summary::-webkit-details-marker { display: none; }
 
     summary::after {
       content: "+";
+      flex: 0 0 34px;
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
       color: var(--mint);
-      font-size: 1.5rem;
+      background: rgba(104,245,195,.035);
+      border: 1px solid rgba(104,245,195,.24);
+      border-radius: 50%;
+      font-size: 1.2rem;
       font-weight: 400;
+      line-height: 1;
+      transition: transform .25s ease, background .25s ease;
     }
 
-    details[open] summary::after { content: "−"; }
+    details[open] summary::after {
+      content: "−";
+      transform: rotate(180deg);
+      background: rgba(104,245,195,.12);
+    }
+
+    summary:focus-visible {
+      outline: 2px solid var(--mint);
+      outline-offset: 3px;
+      border-radius: 14px;
+    }
 
     details p {
-      max-width: 720px;
-      margin: 0 0 28px;
+      max-width: 560px;
+      margin: -4px 64px 24px 24px;
       color: var(--muted);
     }
 
@@ -795,71 +836,40 @@
       color: rgba(255,255,255,.75);
     }
 
-    .form {
+    .contact-action {
       display: grid;
-      gap: 12px;
-      align-content: start;
+      align-content: center;
+      gap: 22px;
+      min-height: 100%;
+      padding: clamp(24px,4vw,42px);
+      background: rgba(0,0,0,.16);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 24px;
+      backdrop-filter: blur(10px);
     }
 
-    .field {
-      display: grid;
-      gap: 7px;
+    .contact-action strong {
+      max-width: 420px;
+      font-family: var(--font-display);
+      font-size: clamp(1.35rem,2.2vw,2rem);
+      font-weight: 500;
+      letter-spacing: -.045em;
+      line-height: 1.18;
     }
 
-    .field label {
-      color: rgba(255,255,255,.8);
-      font-size: .82rem;
-    }
-
-    .field input,
-    .field textarea,
-    .field select {
-      width: 100%;
-      min-height: 52px;
-      padding: 14px 16px;
-      color: white;
-      background: rgba(0,0,0,.22);
-      border: 1px solid rgba(255,255,255,.23);
-      border-radius: 13px;
-      outline: none;
-    }
-
-    .field textarea {
-      min-height: 120px;
-      resize: vertical;
-    }
-
-    .field input:focus,
-    .field textarea:focus,
-    .field select:focus {
-      border-color: var(--mint);
-      box-shadow: 0 0 0 3px var(--mint-soft);
-    }
-
-    .field select option {
-      color: white;
-      background: #201258;
-    }
-
-    .form .button {
-      margin-top: 8px;
+    .contact-action .button {
+      width: fit-content;
       color: #111;
-      background: white;
+      background: var(--mint);
       border: 0;
       font-weight: 750;
     }
 
-    .form > small {
-      color: rgba(255,255,255,.62);
-      font-size: .75rem;
-      line-height: 1.45;
-    }
-
-    .form-status {
-      min-height: 24px;
-      margin: 5px 0 0;
-      color: white !important;
-      font-size: .87rem;
+    .contact-action small {
+      max-width: 420px;
+      color: rgba(255,255,255,.65);
+      font-size: .82rem;
+      line-height: 1.5;
     }
 
     footer { padding: 38px 0 50px; }
@@ -899,6 +909,7 @@
       .step:nth-child(even) { border-right: 0; }
       .job-story { position: static; }
       .team-grid { grid-template-columns: repeat(2,1fr); }
+      .faq { grid-template-columns: 1fr; }
 
       .person:last-child {
         grid-column: 1/-1;
@@ -957,7 +968,7 @@
 
       .logic-strip span:nth-child(even) { display: none; }
 
-      .pain-item { grid-template-columns: 42px 1fr; }
+      .pain-item { grid-template-columns: 1fr auto; }
       .pain-symbol { display: none; }
 
       .steps,
@@ -984,6 +995,14 @@
       .footer-inner {
         flex-direction: column;
       }
+
+      summary {
+        min-height: 82px;
+        padding: 19px 18px;
+        font-size: 1.02rem;
+      }
+
+      details p { margin: -2px 56px 22px 18px; }
 
       .button { width: 100%; }
     }
@@ -1035,7 +1054,7 @@
         <h1>
           От вопроса о клиенте —
           <span class="accent">к решению</span>
-          по продукту.
+          по продукту
         </h1>
 
         <p class="lead">
@@ -1072,7 +1091,7 @@
         <div class="section-header reveal">
           <div>
             <div class="eyebrow">Знакомая ситуация?</div>
-            <h2>Данные есть. Ясности всё ещё нет.</h2>
+            <h2>Данные есть. Ясности всё ещё нет</h2>
           </div>
 
           <p>
@@ -1083,32 +1102,27 @@
 
         <div class="pain-list">
           <div class="pain-item reveal">
-            <span class="pain-number">01</span>
-            <h3>Поговорили с клиентами, но выводы получились размытыми.</h3>
+            <h3>Поговорили с клиентами, но выводы получились размытыми</h3>
             <span class="pain-symbol">↗</span>
           </div>
 
           <div class="pain-item reveal">
-            <span class="pain-number">02</span>
-            <h3>Ценность продукта приходится долго объяснять.</h3>
+            <h3>Ценность продукта приходится долго объяснять</h3>
             <span class="pain-symbol">↗</span>
           </div>
 
           <div class="pain-item reveal">
-            <span class="pain-number">03</span>
-            <h3>Непонятно, на какой сегмент делать ставку.</h3>
+            <h3>Непонятно, на какой сегмент делать ставку</h3>
             <span class="pain-symbol">↗</span>
           </div>
 
           <div class="pain-item reveal">
-            <span class="pain-number">04</span>
-            <h3>Люди интересуются продуктом, но не доходят до покупки.</h3>
+            <h3>Люди интересуются продуктом, но не доходят до покупки</h3>
             <span class="pain-symbol">↗</span>
           </div>
 
           <div class="pain-item reveal">
-            <span class="pain-number">05</span>
-            <h3>Гипотез слишком много, а следующего приоритета нет.</h3>
+            <h3>Гипотез слишком много, а следующего приоритета нет</h3>
             <span class="pain-symbol">↗</span>
           </div>
         </div>
@@ -1144,7 +1158,6 @@
 
             <div class="offer-result">
               <div class="result-item">
-                <span class="result-icon">01</span>
                 <div>
                   <strong>Три точки потери ценности</strong>
                   <p>Где сообщение может быть непонятным или слишком общим.</p>
@@ -1152,7 +1165,6 @@
               </div>
 
               <div class="result-item">
-                <span class="result-icon">02</span>
                 <div>
                   <strong>Конкретные изменения</strong>
                   <p>Что можно убрать, уточнить или перестроить.</p>
@@ -1160,7 +1172,6 @@
               </div>
 
               <div class="result-item">
-                <span class="result-icon">03</span>
                 <div>
                   <strong>Новый вариант сообщения</strong>
                   <p>Черновик оффера на языке результата клиента.</p>
@@ -1168,7 +1179,6 @@
               </div>
 
               <div class="result-item">
-                <span class="result-icon">04</span>
                 <div>
                   <strong>Следующая проверка</strong>
                   <p>Какую гипотезу проверить на клиентах после разбора.</p>
@@ -1176,7 +1186,6 @@
               </div>
 
               <div class="result-item">
-                <span class="result-icon">05</span>
                 <div>
                   <strong>Логика выводов</strong>
                   <p>Показываем, где факт, где интерпретация, а где гипотеза.</p>
@@ -1193,7 +1202,7 @@
         <div class="section-header reveal">
           <div>
             <div class="eyebrow">Как работаем</div>
-            <h2>Одна неопределённость. Один понятный следующий шаг.</h2>
+            <h2>Одна неопределённость. Один понятный следующий шаг</h2>
           </div>
 
           <p>
@@ -1204,31 +1213,31 @@
 
         <div class="steps reveal">
           <article class="step">
-            <span class="step-index">01 / Вопрос</span>
+            <span class="step-index">Вопрос</span>
             <h3>Формулируем неопределённость</h3>
             <p>Что именно мешает принять решение прямо сейчас.</p>
           </article>
 
           <article class="step">
-            <span class="step-index">02 / Материал</span>
+            <span class="step-index">Материал</span>
             <h3>Смотрим ваши данные</h3>
             <p>Оффер, интервью, отзывы, гипотезы или текущий экран.</p>
           </article>
 
           <article class="step">
-            <span class="step-index">03 / Проверка</span>
+            <span class="step-index">Проверка</span>
             <h3>Отделяем факты</h3>
             <p>Показываем, что подтверждено, а что пока остаётся догадкой.</p>
           </article>
 
           <article class="step">
-            <span class="step-index">04 / Синтез</span>
+            <span class="step-index">Синтез</span>
             <h3>Собираем гипотезу</h3>
             <p>Используем JTBD и CustDev там, где они помогают решению.</p>
           </article>
 
           <article class="step">
-            <span class="step-index">05 / Действие</span>
+            <span class="step-index">Действие</span>
             <h3>Выбираем следующий тест</h3>
             <p>Формулируем действие, которое команда может реально выполнить.</p>
           </article>
@@ -1241,7 +1250,7 @@
         <div class="section-header reveal">
           <div>
             <div class="eyebrow">Сценарии</div>
-            <h2>Начать можно с точки, где сейчас больше всего неизвестного.</h2>
+            <h2>Начать можно с точки, где сейчас больше всего неизвестного</h2>
           </div>
         </div>
 
@@ -1286,7 +1295,7 @@
 
         <div class="method-copy reveal">
           <div class="eyebrow">Почему JTBD</div>
-          <h2>Смотрим не только на человека. Смотрим на его ситуацию.</h2>
+          <h2>Смотрим не только на человека. Смотрим на его ситуацию</h2>
 
           <p>
             JTBD рассматривает продукт как инструмент,
@@ -1331,7 +1340,7 @@
         <div class="section-header reveal">
           <div>
             <div class="eyebrow">Прозрачный результат</div>
-            <h2>Не просто мнение. Понятная структура вывода.</h2>
+            <h2>Не просто мнение. Понятная структура вывода</h2>
           </div>
 
           <p>
@@ -1348,7 +1357,7 @@
 
           <h3>
             Ценность описана через функцию продукта,
-            но не через ситуацию и результат покупателя.
+            но не через ситуацию и результат покупателя
           </h3>
 
           <div class="artifact-grid">
@@ -1379,7 +1388,7 @@
         <div class="section-header reveal">
           <div>
             <div class="eyebrow">Команда</div>
-            <h2>Ядро проекта и экспертиза под задачу.</h2>
+            <h2>Ядро проекта и экспертиза под задачу</h2>
           </div>
 
           <p>
@@ -1393,25 +1402,23 @@
             <img class="portrait" src="/images/nika-myata.webp" alt="Ника Мята" loading="lazy" width="900" height="1125">
             <div class="person-info">
               <h3>Ника Мята</h3>
-              <p>Продуктовая стратегия и исследования</p>
+              <p>Ведёт продуктовую стратегию и общий разбор</p>
             </div>
           </article>
 
           <article class="person reveal">
-            <img class="portrait" src="/images/product-research.webp" alt="Иллюстративный портрет специалиста по продуктовым исследованиям" loading="lazy" width="900" height="1125">
+            <img class="portrait" src="/images/product-research.webp" alt="Иллюстративный портрет Марка Контекста" loading="lazy" width="900" height="1125">
             <div class="person-info">
-              <h3>Продуктовый исследователь</h3>
-              <p>Интервью, JTBD и CustDev</p>
-              <small class="person-note">Иллюстративный образ роли · фото заменим</small>
+              <h3>Марк Контекст</h3>
+              <p>Проводит интервью и собирает JTBD-контекст</p>
             </div>
           </article>
 
           <article class="person reveal">
-            <img class="portrait" src="/images/research-synthesis.webp" alt="Иллюстративный портрет специалиста по синтезу исследований" loading="lazy" width="900" height="1125">
+            <img class="portrait" src="/images/research-synthesis.webp" alt="Иллюстративный портрет Аси Фокус" loading="lazy" width="900" height="1125">
             <div class="person-info">
-              <h3>Аналитик исследований</h3>
-              <p>Синтез данных и проверка гипотез</p>
-              <small class="person-note">Иллюстративный образ роли · фото заменим</small>
+              <h3>Ася Фокус</h3>
+              <p>Синтезирует данные и проверяет гипотезы</p>
             </div>
           </article>
         </div>
@@ -1423,8 +1430,11 @@
         <div class="section-header reveal">
           <div>
             <div class="eyebrow">FAQ</div>
-            <h2>Коротко о формате.</h2>
+            <h2>Коротко о формате</h2>
           </div>
+          <p>
+            Шесть ответов о старте, процессе и границах результата — без мелкого шрифта и скрытых условий.
+          </p>
         </div>
 
         <div class="faq reveal">
@@ -1486,7 +1496,7 @@
           <div class="contact-grid">
             <div>
               <div class="eyebrow" style="color:#fff">Первый шаг</div>
-              <h2>Разберём, что сейчас важнее всего проверить.</h2>
+              <h2>Разберём, что сейчас важнее всего проверить</h2>
 
               <p>
                 Коротко опишите ситуацию. Если формат подходит,
@@ -1495,39 +1505,13 @@
               </p>
             </div>
 
-            <form class="form" id="requestForm">
-              <div class="field">
-                <label for="name">Как к вам обращаться</label>
-                <input id="name" name="name" autocomplete="name" required>
-              </div>
-
-              <div class="field">
-                <label for="contactInput">Telegram или email</label>
-                <input id="contactInput" name="contact" required placeholder="@username">
-              </div>
-
-              <div class="field">
-                <label for="task">Где сейчас больше всего неопределённости?</label>
-                <select id="task" name="task" required>
-                  <option value="">Выберите вариант</option>
-                  <option>Кому продавать</option>
-                  <option>Как объяснить ценность</option>
-                  <option>Почему люди не покупают</option>
-                  <option>Что следует из интервью</option>
-                  <option>Что проверять следующим</option>
-                  <option>Другая задача</option>
-                </select>
-              </div>
-
-              <div class="field">
-                <label for="context">Расскажите немного о ситуации</label>
-                <textarea id="context" name="context" required placeholder="Что уже пробовали и где всё равно осталась неопределённость?"></textarea>
-              </div>
-
-              <button class="button" type="submit">Подготовить обращение →</button>
-              <small>Форма ничего не отправляет на сервер: обращение копируется и открывается Telegram.</small>
-              <p class="form-status" id="formStatus" aria-live="polite"></p>
-            </form>
+            <div class="contact-action">
+              <strong>Напишите Нике коротко о продукте и решении, которое сейчас трудно принять</strong>
+              <a class="button" href="https://t.me/nika_myata" target="_blank" rel="noopener noreferrer">
+                Перейти в Telegram →
+              </a>
+              <small>Сайт не запрашивает и не хранит ваши имя, контакты или описание задачи</small>
+            </div>
           </div>
         </div>
       </div>
@@ -1542,10 +1526,6 @@
   </footer>
 
   <script>
-    const CONFIG = {
-      telegramUrl: "https://t.me/kokolsk1y"
-    };
-
     const nav = document.getElementById("nav");
     const menuButton = document.getElementById("menuButton");
     const navLinks = document.getElementById("navLinks");
@@ -1579,36 +1559,6 @@
 
     document.querySelectorAll(".reveal").forEach(element => observer.observe(element));
     document.getElementById("year").textContent = new Date().getFullYear();
-
-    const form = document.getElementById("requestForm");
-    const formStatus = document.getElementById("formStatus");
-
-    form.addEventListener("submit", async event => {
-      event.preventDefault();
-
-      const data = new FormData(form);
-      const message = [
-        "Здравствуйте! Хочу разобрать продуктовую задачу.",
-        "",
-        `Имя: ${data.get("name")}`,
-        `Контакт: ${data.get("contact")}`,
-        `Задача: ${data.get("task")}`,
-        `Контекст: ${data.get("context")}`
-      ].join("\n");
-
-      try {
-        await navigator.clipboard.writeText(message);
-
-        if (CONFIG.telegramUrl) {
-          formStatus.textContent = "Обращение скопировано. Вставьте его в открывшийся чат.";
-          window.open(CONFIG.telegramUrl, "_blank", "noopener,noreferrer");
-        } else {
-          formStatus.textContent = "Обращение скопировано. Перед публикацией укажите Telegram команды.";
-        }
-      } catch {
-        formStatus.textContent = "Не удалось скопировать автоматически. Скопируйте данные формы вручную.";
-      }
-    });
 
     const canvas = document.getElementById("signalCanvas");
     const ctx = canvas.getContext("2d");
